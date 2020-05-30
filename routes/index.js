@@ -10,7 +10,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/premise/:uuid', (req, res, next) => {
-  PremiseController.get_info('222', (err, response) => {
+  PremiseController.get_info(req.params.uuid, (err, response) => {
     if(err){
       res.json(err)
     } else {
