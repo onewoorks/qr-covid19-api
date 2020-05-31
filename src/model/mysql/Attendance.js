@@ -31,8 +31,12 @@ attendance.get_list_attendance = (filter_data, result) => {
 }
 
 attendance.get_date_grouping = (uuid, result) => {
-    let query = "SELECT date(datetime) as the_date FROM attendance WHERE cawangan=? GROUP BY date(datetime) ORDER BY datetime DESC"
-    mysql.query(query, [222], (err, res) => {
+    let query = "SELECT date(datetime) as the_date "
+    query += "FROM attendance "
+    query += "WHERE cawangan=? "
+    query += "AND date(datetime) != DATE(now()) "
+    query += "GROUP BY date(datetime) ORDER BY datetime DESC"
+    mysql.query(query, [uuid], (err, res) => {
         if(err)
             result(err)
         result(null, res)

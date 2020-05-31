@@ -13,11 +13,12 @@ router.get('/premise/:uuid', (req, res, next) => {
   PremiseController.get_info(req.params.uuid, (err, response) => {
     if(err){
       res.json(err)
-    } else {
+     } else {
       res.json(response)
     }
   })
 })
+
 
 router.post('/attendance/', (req, res, next) => {
   AttendanceController.create_attendance(req.body, (err, response)=>{

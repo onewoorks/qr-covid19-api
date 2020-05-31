@@ -23,7 +23,8 @@ exports.get_attendance = (payloads, result) => {
 }
 
 exports.get_date_grouping = (uuid, result) => {
-    AttendanceModel.get_date_grouping(uuid, (err, res) => {
+    console.log(uuid)
+    AttendanceModel.get_date_grouping(222, (err, res) => {
         if(err)
             result(err)
         result(null, res)
