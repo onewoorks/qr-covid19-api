@@ -22,9 +22,8 @@ exports.get_attendance = (payloads, result) => {
     })
 }
 
-exports.get_date_grouping = (uuid, result) => {
-    console.log(uuid)
-    AttendanceModel.get_date_grouping(222, (err, res) => {
+exports.get_date_grouping = (payloads, result) => {
+    AttendanceModel.get_date_grouping(payloads, (err, res) => {
         if(err)
             result(err)
         result(null, res)

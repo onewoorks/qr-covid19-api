@@ -39,7 +39,7 @@ router.post('/attendance/list', (req, res, next) => {
 router.post('/attendance/date-group', (req, res, next) => {
   AttendanceController.get_date_grouping(req.body, (err, response) => {
     if(err)
-      res,json(err)
+      res.json(err)
     res.json(response)
   })
 })
