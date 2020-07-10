@@ -43,6 +43,10 @@ CREATE TABLE `premise` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+INSERT INTO `premise` (`id`, `datetime`, `nama_cawangan`, `alamat`, `no_telefon`, `uuid`, `image`, `cawangan_induk`, `maklumat_tambahan`)
+VALUES
+	(1, '2020-05-31 04:02:51', 'TUKANG EMAS', 'TukangemaS™\n349 G, Jalan Temenggung,\nBandar Kota Bharu,\n15000 Kota Bharu,\nKelantan', '013 900 0000', 'ff1afb43-c1e7-42e2-b215-9ac3806ba5c1', 'https://tukangemas.my/image/catalog/_store/logo.png', 'TukangEmas', NULL);
+
 
 
 
