@@ -2,9 +2,9 @@ var mysql = require('mysql');
 
 //local mysql db connection
 var connection = mysql.createConnection({
-    host     : '',
+    host     : 'localhost',
     user     : 'root',
-    password : 're^mp123',
+    password : 'x',
     database : 'covid_attendance'
 });
 
