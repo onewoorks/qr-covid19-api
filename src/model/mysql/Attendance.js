@@ -30,6 +30,17 @@ attendance.get_list_attendance = (filter_data, result) => {
     })
 }
 
+attendance.get_list_attendance_semua = (filter_data, result) => {
+    let query = "SELECT a.*, p.nama_cawangan FROM attendance a "
+    query += "LEFT JOIN premise p ON p.uuid = a.cawangan "
+    query += "WHERE DATE(a.datetime) = ? "
+    mysql.query(query, [filter_data.tarikh], (err, res) => {
+        if(err)
+            result(err)
+        result(null, res)
+    })
+}
+
 attendance.get_date_grouping = (payloads, result) => {
     let query = "SELECT date(datetime) as the_date "
     query += "FROM attendance "
@@ -37,6 +48,19 @@ attendance.get_date_grouping = (payloads, result) => {
     query += "AND date(datetime) != DATE(now()) "
     query += "GROUP BY date(datetime) ORDER BY datetime DESC"
     mysql.query(query, [payloads.uuid], (err, res) => {
+        if(err)
+            result(err)
+        result(null, res)
+    })
+}
+
+attendance.get_date_grouping_semua = (payloads, result) => {
+    let query = "SELECT date(datetime) as the_date "
+    query += "FROM attendance "
+    query += "WHERE "
+    query += "date(datetime) != DATE(now()) "
+    query += "GROUP BY date(datetime) ORDER BY datetime DESC"
+    mysql.query(query, [], (err, res) => {
         if(err)
             result(err)
         result(null, res)

@@ -2,7 +2,6 @@
 const PremiseModel = require('../model/mysql/Premise.js')
 
 exports.get_info = (uuid, result) => {
-    console.log('inn')
      PremiseModel.get_info(uuid, (err, res) => {
         if(err){
             result(err)
@@ -33,5 +32,12 @@ exports.ubah_premise = (payloads, result) => {
         if(err)
             result(err)
         result(null, res)
+    })
+}
+
+exports.statistik_hadir = (payloads, result) => {
+    PremiseModel.statistik_hadir(payloads, (err, res)=>{
+        if(err) result(err)
+        result(null,res)
     })
 }

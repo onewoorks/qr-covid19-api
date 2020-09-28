@@ -70,5 +70,17 @@ premise.ubah_premise = (form, result) => {
         })
 }
 
+premise.statistik_hadir = (payloads, result) => {
+    let query = "select "
+    query += "p.nama_cawangan as lokasi, "
+    query += "p.alamat as bangunan, "
+    query += "(select count(id) from attendance where cawangan=p.uuid and (year(datetime) = year(now()) and month(datetime) = month(now()))) as hadir_bulan_ini, "
+    query += "(select count(id) from attendance where cawangan=p.uuid and yearweek(datetime) = yearweek(now())) as hadir_minggu_ini "
+    query += "from premise p"
+    mysql.query(query,[],(err,res)=>{
+        if(err) result(err)
+        result(null,res)
+    })
+}
 
 module.exports = premise
